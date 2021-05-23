@@ -1,4 +1,4 @@
-const descriptiers = [
+module.exports.descripters = [
     'tropical', 
     'dense', 
     'thick', 
@@ -18,7 +18,7 @@ const descriptiers = [
     'tangled', 
     'distant'
 ]
-const places = [
+module.exports.places = [
     'Flats',
     'Village',
     'Canyon',
