@@ -1,0 +1,35 @@
+const descriptiers = [
+    'tropical', 
+    'dense', 
+    'thick', 
+    'dark', 
+    'deciduous', 
+    'primeval', 
+    'mixed', 
+    'deep', 
+    'boreal', 
+    'national', 
+    'primary',
+    'secondary', 
+    'growth', 
+    'temperate',
+    'magnificent', 
+    'southern',
+    'tangled', 
+    'distant'
+]
+const places = [
+    'Flats',
+    'Village',
+    'Canyon',
+    'Pond',
+    'Group camp',
+    'River',
+    'Bay',
+    'Spring',
+    'Hunting camp',
+    'Sands',
+    'Cliffs',
+    'Hallow',
+    'Ghost Town'
+]
