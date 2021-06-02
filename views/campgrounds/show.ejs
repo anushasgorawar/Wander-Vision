@@ -1,8 +1,7 @@
 <%layout('layouts/boilerplate.ejs')%>
 
-<div class="row">
-<div class="col-6 offset-4">
-<div class="card text-center" style="width: 18rem;">
+<div class="d-flex justify-content-center mt-2 mb-2">
+  <div class="card text-center" style="width: 25rem;">
     <img src="<%=campground.image%>" class="card-img-top" alt="...No image found"">
     <div class="card-body">
       <h5 class="card-title"><%=campground.title%></h5>
@@ -15,12 +14,11 @@
     <div class="card-body">
       <a type="button" class="card-link btn btn-info" href="/campgrounds/<%=campground.id%>/edit ">Edit</a>
       <form class="d-inline" method="POST" action="/campground/<%=campground.id%>?_method=DELETE">
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger">Delete</button>
     </form>
     </div>
   <a type="button" class="btn btn-outline-dark" href="/campgrounds" >GO BACK</a>
   </div> 
-</div>
 </div>
 
         
