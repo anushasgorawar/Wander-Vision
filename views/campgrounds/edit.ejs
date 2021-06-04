@@ -1,21 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST" action="/campgrounds/<%=campground.id%>?_method=PUT">
-        <label for="title"> Title</label>
-        <%=console.log(campground)%>
-        <input type="text" id="title" name="title" value="<%=`${campground.title}`%>">
-        <label for="location"> Location</label>
-        <input type="text" id="location" name="location" value=<%=campground.location%>>
-        <button> SUBMIT</button>
-
-    </form>
+<%layout('layouts/boilerplate.ejs')%>
+<div class= "row">
+    <h1 class="text-center"> Edit Campground</h1>
+    <div class="col-6 offset-3">
+        <form method="POST" action="/campgrounds/<%=campground._id%>?_method=PUT" novalidate class="ValidatedForm">
+            <div class="mb-3">
+                <label class="form-label" for="title"> Title</label>
+                <input class="form-control" type="text" id="title" name="title" value="<%=`${campground.title}`%>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location"> Location</label>
+                <input class="form-control" type="text" id="location" name="location" value="<%=campground.location%>" required>
+            </div>
+            <div>
+                <label class="form-label" for="price"> Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Rs.</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="price" name="price" value="<%=campground.price%>" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image"> Image Url</label>
+                <input class="form-control" type="text" id="image" name="image" value="<%=campground.image%>" required>
+            </div>
+        
+            <div class="mb-3">
+                <label class="form-label" for="description">description</label>
+                <textarea class="form-control" id="description" name="description" required><%=campground.description%></textarea>
+              </div>
     
-</body>
-</html>
+            <div class="mb-3">
+                <button class="btn btn-dark"> SUBMIT</button>
+            </div>
+        </form>
+        <a class="btn btn-outline-dark" href="<%=`/campgrounds/${campground.id}`%>" > Back</a>
+    </div>
+</div>
+
