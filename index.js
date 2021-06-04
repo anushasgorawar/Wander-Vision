@@ -47,10 +47,10 @@ const validateCampground=(req,res,next)=>{
 app.get('/',(req,res)=>{
     res.render('home');
 })
-app.get('/campgrounds', catchAsync(async (req, res) => {
+app.get('/campgrounds', async (req, res) => {
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', { campgrounds })
-}));
+});
 // CREATE
 app.get('/campgrounds/addnew',(req,res)=>{
     res.render('campgrounds/addnew')
@@ -60,7 +60,7 @@ app.post('/campgrounds',validateCampground, catchAsync(async(req,res,next)=>{
     
     const campground = new Campground(req.body.campground);
     await campground.save();
-    res.redirect(`/campgrounds/${campground._id}`);
+    res.redirect(`/campgrounds/${campground.id}`);
 }))
 //READ
 app.get('/campgrounds/:id',catchAsync(async(req,res)=>{
@@ -79,7 +79,7 @@ app.get('/campgrounds/:id/edit',catchAsync(async(req,res)=>{
 app.put('/campgrounds/:id',validateCampground,catchAsync(async(req,res)=>{
     const {id} = req.params;
         const campground = await Campground.findByIdAndUpdate(id,{...req.body.Campground},{runValidators:true,new:true});
-        res.redirect(`/campgrounds/${campground._id}`);
+        res.redirect(`/campgrounds/${campground.id}`);
 }))
 
 //DELETE
