@@ -30,6 +30,7 @@ router.post('/',validateCampground,catchAsync( async(req,res,next)=>{
     //if (!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
     const campground = new Campground(req.body.campground);
     await campground.save();
+    req.flash('success','Successfully added a new campground');
     res.redirect('/campgrounds');
 }))
 //Using TRYCATCH 
@@ -59,7 +60,8 @@ router.get('/:id/edit',catchAsync(async(req,res)=>{
 }))
 router.put('/:id',validateCampground,catchAsync(async(req,res)=>{
     const {id} = req.params;
-    await Campground.findByIdAndUpdate(id,{...req.body.campground});
+    await Campground.findByIdAndUpdate(id,{...req.body.campground}); 
+    req.flash('success','Updated your Campground');
     res.redirect(`/campgrounds/${id}`);
 }))
 
@@ -67,6 +69,7 @@ router.put('/:id',validateCampground,catchAsync(async(req,res)=>{
 router.delete('/:id',catchAsync(async (req,res)=>{
     const {id} = req.params;
     await Campground.findByIdAndDelete(id);
+    req.flash('success','Your campground is deleted');
     res.redirect('/campgrounds');
 }))
 

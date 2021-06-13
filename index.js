@@ -16,6 +16,7 @@ const methodOverride = require('method-override');
 const campgroundRouter = require('./routes/campground');
 const reviewRouter = require('./routes/review');
 const session = require('express-session')
+const flash= require('connect-flash')
 
 const config = {
     secret:"Our secret",
@@ -28,6 +29,14 @@ const config = {
     }
 }
 app.use(session(config));
+app.use(flash());
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash('success');
+    //res.locals.deleted = req.flash('deleted');
+    // res.locals.error = req.flash('error');
+    next(); 
+})
 
 mongoose.connect('mongodb://localhost:27017/camp',{
     useNewUrlParser:true,
