@@ -2,7 +2,7 @@
 
 <div class="row justify-content-center">
     <div class="col-4">
-        <div class="card mb-3 mt-3">
+        <div class="card mb-3">
             <img src="<%= campground.image%>" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title"><%= campground.title%></h5>
@@ -24,7 +24,7 @@
         </div>
 
     </div>
-    <div class="col-5  mt-3">
+    <div class="col-5 ">
         <h2>Leave a Review</h2>
         <form action="/campgrounds/<%=campground._id%>/review" method="POST" class="mb-3 validate-this" novalidate>
             <div class="mb-3">

@@ -4,7 +4,7 @@ const Campground = require('../models/campground');
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/ExpressError');
 const {campgroundSchema}=require('../Schemas.js') 
-
+const { isLoggedIn }=require('../middleware.js')
 
 const validateCampground = (req,res,next) =>{
     const { error } = campgroundSchema.validate(req.body);
@@ -21,40 +21,20 @@ router.get('/',catchAsync(async(req,res)=>{
     res.render('campgrounds/index',{campgrounds});
 }))
 // CREATE
-router.get('/addnew',(req,res)=>{
-    res.render('campgrounds/addnew')
+router.get('/addnew',isLoggedIn,(req,res)=>{
+        res.render('campgrounds/addnew')
 })
 
 //Using Aysnc
-router.post('/',validateCampground,catchAsync( async(req,res,next)=>{
+router.post('/',isLoggedIn,validateCampground,catchAsync( async(req,res,next)=>{
     //if (!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
     const campground = new Campground(req.body.campground);
     await campground.save();
     req.flash('success','Successfully added a new campground');
     res.redirect('/campgrounds');
 }))
-//Using TRYCATCH 
-// router.post('/',async(req,res,next)=>{
-//     try{
-//     const campground = new Campground(req.body);
-//     await campground.save();
-//     res.redirect('/');
-//     }catch(e){
-//         next(e);
-//     }
-// })
-
 
 //READ
-// router.get('/:id',catchAsync( async(req,res,)=>{
-//     const {id}= req.params;
-//     const campground = await Campground.findById(id).populate('reviews');
-//     if(!campground){
-//         req.flash('error','Sorry, That campground doesnt exist');
-//         return res.redirect('/campgrounds');
-//     }
-//     res.render('campgrounds/show',{campground});
-// }))
 router.get('/:id', catchAsync(async (req, res,) => {
     const campground = await Campground.findById(req.params.id).populate('reviews');
     if (!campground) {
@@ -87,6 +67,5 @@ router.delete('/:id',catchAsync(async (req,res)=>{
     req.flash('success','Your campground is deleted');
     res.redirect('/campgrounds');
 }))
-
 
 module.exports = router;

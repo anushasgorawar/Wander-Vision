@@ -8,8 +8,13 @@ const morgan =  require('morgan');
 const methodOverride = require('method-override');
 const campgroundRouter = require('./routes/campground');
 const reviewRouter = require('./routes/review');
+const userRouter = require('./routes/user')
 const session = require('express-session')
 const flash= require('connect-flash')
+const localStrategy = require('passport-local')
+const passport = require('passport');
+const User = require('./models/user');
+
 
 mongoose.connect('mongodb://localhost:27017/camp',{
     useNewUrlParser:true,
@@ -37,7 +42,7 @@ app.use(express.json());
 const config = {
     secret:"Our secret",
     resave:false ,
-    saveUninitialised : true,
+    saveUninitialized : true,
     cookie : {
         httpOnly: true,
         expires: Date.now()+ (1000*60*60*24),
@@ -47,22 +52,28 @@ const config = {
 app.use(session(config));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()))
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req,res,next)=>{
+    res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
-    console.log("THIS IS PRINTING");
     res.locals.error = req.flash('error');
-    console.log("THIS IS ALSO PRINTING");
     next(); 
 })
 
- 
+
+app.use('/',userRouter)
 app.use('/campgrounds',campgroundRouter)
 app.use('/campgrounds/:id/review',reviewRouter)
 
 app.get('/',(req,res)=>{
     res.render('home');
 })
-
 
 app.all('*',(req,res,next)=>{
     next(new ExpressError('Page Not Found',404));
