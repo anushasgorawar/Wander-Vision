@@ -9,7 +9,6 @@
 						event.preventDefault()
 						event.stopPropagation()
 					}
-	console.log("Here in validation form");
 			form.classList.add('was-validated')
 		  }, false)
 		})
