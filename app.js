@@ -15,6 +15,7 @@ const localStrategy = require('passport-local')
 const passport = require('passport');
 const User = require('./models/user');
 
+
 mongoose.connect('mongodb://localhost:27017/camp',{
     useNewUrlParser:true,
     useCreateIndex:true,
