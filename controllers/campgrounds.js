@@ -13,7 +13,7 @@ module.exports.createNewCampground = async(req,res,next)=>{
     await campground.save();
     console.log(campground);
     req.flash('success','Successfully added a new campground');
-    res.redirect('/campgrounds');
+    res.redirect(`/campgrounds/${campground._id}`);
 }
 module.exports.show = async (req, res,) => {
     const campground = await Campground.findById(req.params.id).populate({

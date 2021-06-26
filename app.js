@@ -82,7 +82,7 @@ app.use((err,req,res,next)=>{
     const {statusCode = 500 }= err;
     if(err.kind == 'ObjectId'){
         req.flash('error',"Campground not found");
-        res.redirect('/campgrounds')
+        return res.redirect('/campgrounds')
     }
     if(!err.message ) err.message = "Something Went Wrong";
     res.status(statusCode).render('error',{err});
