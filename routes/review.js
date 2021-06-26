@@ -20,12 +20,12 @@ router.post('/',isLoggedIn,validateReview,catchAsync(async(req,res,next)=>{
 
 }));
 
-router.delete('/:rid',isLoggedIn,async(req,res)=>{
+router.delete('/:rid',isLoggedIn,catchAsync(async(req,res)=>{
     const { rid , id} = req.params;
     await Campground.findByIdAndUpdate(id,{$pull:{reviews: rid}})
     await Review.findByIdAndDelete(rid);
     req.flash('success','Your review is deleted');
     res.redirect(`/campgrounds/${id}`)
-})
+}))
 
 module.exports = router;

@@ -17,14 +17,13 @@ router.get('/addnew',isLoggedIn,(req,res)=>{
 router.post('/',isLoggedIn,validateCampground,catchAsync( async(req,res,next)=>{
     const campground = new Campground(req.body.campground);
     campground.author = req.user._id;
-    console.log(campground);
     await campground.save();
     req.flash('success','Successfully added a new campground');
-    res.redirect('/campgrounds');
+    res.redirect(`/campgrounds/${campground._id}`); 
 }))
 
 //READ
-router.get('/:id', catchAsync(async (req, res,) => {
+router.get('/:id', catchAsync(async (req, res,next) => {
     const campground = await Campground.findById(req.params.id).populate({
         path:'reviews',
         populate:{
