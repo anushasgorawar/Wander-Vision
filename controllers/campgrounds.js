@@ -11,20 +11,22 @@ module.exports.createNewCampground = async(req,res,next)=>{
     const campground = new Campground(req.body.campground);
     campground.author = req.user._id;
     await campground.save();
+    console.log(campground);
     req.flash('success','Successfully added a new campground');
     res.redirect('/campgrounds');
 }
-module.exports.show =async (req, res,) => {
+module.exports.show = async (req, res,) => {
     const campground = await Campground.findById(req.params.id).populate({
-        path:'reviews',
-        populate:{
-            path:'author'
+        path: 'reviews',
+        populate: {
+            path: 'author'
         }
     }).populate('author');
     if (!campground) {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/campgrounds');
     }
+    console.log(campground)
     res.render('campgrounds/show', { campground });
 }
 module.exports.updateForm = async(req,res)=>{
