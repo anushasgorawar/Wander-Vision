@@ -32,6 +32,10 @@ const seedDB = async()=>{
             title: `${array_random(descripters)} ${array_random(places)}`,
             location: `${cities[random].city},${cities[random].admin_name}`,
             price: pr,
+            geometry: {
+                coordinates: [ 77.59796, 12.96991 ], 
+                type: 'Point' 
+            },
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quo doloribus consequuntur unde natus. Consectetur, enim illum. Veritatis, assumenda ex!",
             images: [
                 {
