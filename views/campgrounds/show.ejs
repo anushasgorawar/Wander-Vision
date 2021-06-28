@@ -3,10 +3,6 @@
 
 <div class="row justify-content-center">
     <div class="col-md-4">
-
-        <div id='map' style='width: 400px; height: 300px;'></div>
-    
-
         <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <% campground.images.forEach((img,i)=>{{ %> 
@@ -56,6 +52,8 @@
 
     </div>
     <div class="col-md-5 ">
+
+        <div id='map' style='width: 400px; height: 300px;'></div>
         <% if(currentUser){ %> 
         <h2>Leave a Review</h2>
         </br>
