@@ -1,6 +1,6 @@
 (function () {
 			'use strict'
-	
+			bsCustomFileInput.init()
 			var forms = document.querySelectorAll('.validate-this')
 	
 			Array.from(forms).forEach(function (form) {

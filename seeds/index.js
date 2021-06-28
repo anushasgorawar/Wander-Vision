@@ -33,8 +33,16 @@ const seedDB = async()=>{
             location: `${cities[random].city},${cities[random].admin_name}`,
             price: pr,
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quo doloribus consequuntur unde natus. Consectetur, enim illum. Veritatis, assumenda ex!",
-            image: "https://source.unsplash.com/featured/?india,nature"
-
+            images: [
+                {
+                  url: 'https://res.cloudinary.com/esjiwanders/image/upload/v1624817793/Wander/gfe9yhxy85mbn2tqamdx.jpg',
+                  filename: 'Wander/gfe9yhxy85mbn2tqamdx'
+                },
+                {
+                  url: 'https://res.cloudinary.com/esjiwanders/image/upload/v1624817792/Wander/qzye4msad35tjbcrgkjj.jpg',
+                  filename: 'Wander/qzye4msad35tjbcrgkjj'
+                }
+              ]
         })
         await c.save();
     }
