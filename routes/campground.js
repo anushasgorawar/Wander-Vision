@@ -14,13 +14,11 @@ router.route('/')
 	
 router.get('/addnew',isLoggedIn,campground.renderNewForm)
  
-
 router.route('/:id')
 	.get(catchAsync(campground.show))
 	.put(isLoggedIn,isAuthor,upload.array('image'),validateCampground,catchAsync(campground.update))
 	.delete(isLoggedIn,isAuthor,catchAsync(campground.delete))
 
 router.get('/:id/edit',isLoggedIn,isAuthor,catchAsync(campground.updateForm))
-
 
 module.exports = router;

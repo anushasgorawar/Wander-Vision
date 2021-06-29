@@ -1,11 +1,13 @@
 mapboxgl.accessToken = mapToken;
 
 var map = new mapboxgl.Map({
-container: 'map',
+container: 'cluster-map',
 style: 'mapbox://styles/mapbox/outdoors-v11',
 center: [82.848639,23.023819],
 zoom: 3
 });
+
+map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
  
 map.on('load', function () {
 	map.addSource('campgrounds', {
