@@ -13,7 +13,6 @@ router.route('/')
 	.post(isLoggedIn,upload.array('image'),validateCampground, catchAsync(campground.createNewCampground)) 
 	
 router.get('/addnew',isLoggedIn,campground.renderNewForm)
- 
 
 router.route('/:id')
 	.get(catchAsync(campground.show))
@@ -21,6 +20,5 @@ router.route('/:id')
 	.delete(isLoggedIn,isAuthor,catchAsync(campground.delete))
 
 router.get('/:id/edit',isLoggedIn,isAuthor,catchAsync(campground.updateForm))
-
 
 module.exports = router;
