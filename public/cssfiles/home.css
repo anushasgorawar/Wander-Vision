@@ -2,7 +2,7 @@ body {
     height: 100vh;
 background-color: bisque;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1559521783-1d1599583485?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    url("https://res.cloudinary.com/esjiwanders/image/upload/v1624993756/WanderBG/jonathan-forage-1azAjl8FTnU-unsplash_kc1kve.jpg");
     background-size: cover;
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);

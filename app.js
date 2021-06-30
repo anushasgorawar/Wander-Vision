@@ -1,6 +1,7 @@
-if(process.env.NODE_ENV!=="production"){
+// if(process.env.NODE_ENV!=="production"){
+//     require('dotenv').config();
+// }
     require('dotenv').config();
-}
 // console.log(process.env.CLOUDINARY_CLOUD_NAME)
 
 const express = require('express');
@@ -20,6 +21,10 @@ const localStrategy = require('passport-local')
 const passport = require('passport');
 const User = require('./models/user');
 
+const mongoSanitize = require('express-mongo-sanitize');
+app.use(mongoSanitize({
+    replaceWith: '_',
+  }));
 
 mongoose.connect('mongodb://localhost:27017/camp',{
     useNewUrlParser:true,
@@ -45,11 +50,13 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 const config = {
+    name: "Wanderer",
     secret:"Our secret",
     resave:false ,
     saveUninitialized : true,
     cookie : {
         httpOnly: true,
+        // secure:true,
         expires: Date.now()+ (1000*60*60*24),
         maxAge : 1000*60*60*24
     }
@@ -65,6 +72,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
+console.log(req.query);
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
