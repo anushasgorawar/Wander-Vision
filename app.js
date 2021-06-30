@@ -20,6 +20,7 @@ const flash= require('connect-flash')
 const localStrategy = require('passport-local')
 const passport = require('passport');
 const User = require('./models/user');
+const helmet = require('helmet');
 
 const mongoSanitize = require('express-mongo-sanitize');
 app.use(mongoSanitize({
@@ -63,6 +64,11 @@ const config = {
 }
 app.use(session(config));
 app.use(flash());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -72,7 +78,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next)=>{
-console.log(req.query);
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
