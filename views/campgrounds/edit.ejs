@@ -20,14 +20,13 @@
             </div>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="image" name="image" multiple >
-                <!-- <label class="input-group-text" for="image">Upload Images</label> -->
               </div>
             <div class="mb-3">
                 <label class="form-label" for="description">description</label>
                 <textarea class="form-control" id="description" name="campground[description]" required><%=campground.description%></textarea>
               </div>
 <%if (campground.images.length){%>
-              <p>Select images you wish to delete:</p>
+              <p class="form-label">Select images you wish to delete:</p>
 <%}%>
             <div class="mb3">
                 <% campground.images.forEach(function(image,i){ %> 

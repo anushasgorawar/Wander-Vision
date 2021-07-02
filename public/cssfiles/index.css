@@ -1,13 +1,4 @@
-/* body {
-    height: 100vh;
-    background-color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.5)),
-    url("https://source.unsplash.com/featured/?nature,travel,camp");
-    background-size: cover;
-    background-position: center;
-    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
-} */
-    
+  
 #cluster-map{
     border: 3px solid white;
 }
@@ -20,38 +11,3 @@ body {
     background-position: center;
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
 }
-/* img{
- position: absolute;
-  clip: rect(0px,60px,200px,0px);
-} */
-/* 
-.cover-container {
-  max-width: 60vw;
-}
-
-.nav-link {
-    padding: 0.25rem 0;
-    font-weight: 700;
-    color: rgba(255,255,255,0.5);
-    margin-left: 1rem;
-    border-bottom: 0.25rem solid transparent;
-}
-
-.nav-link:hover{
-    color: rgba(255,255,255,0.5);
-    border-bottom-color:rgba(255,255,255,0.5);
-}
-
-.nav-link.active {
-    color: white;
-    border-bottom-color:white;
-
-}
-
-.btn-secondary, .btn-secondary:hover{
-    color: #333;
-    text-shadow: none;
-}
-mb-auto{
-    text-shadow: 2px 2px;
-} */
