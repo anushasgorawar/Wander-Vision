@@ -1,8 +1,6 @@
-// if(process.env.NODE_ENV!=="production"){
-//     require('dotenv').config();
-// }
+if(process.env.NODE_ENV!=="production"){
     require('dotenv').config();
-// console.log(process.env.CLOUDINARY_CLOUD_NAME)
+}
 
 const express = require('express');
 const app = express();
@@ -22,12 +20,10 @@ const passport = require('passport');
 const User = require('./models/user');
 const helmet = require('helmet');
 
-const mongoSanitize = require('express-mongo-sanitize');
-app.use(mongoSanitize({
-    replaceWith: '_',
-  }));
-
-mongoose.connect('mongodb://localhost:27017/camp',{
+const MongoDBStore = require("connect-mongo")(session);
+const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/camp'
+const secret = process.env.SECRET;
+mongoose.connect(dbUrl,{
     useNewUrlParser:true,
     useCreateIndex:true,
     useUnifiedTopology:true,
@@ -50,9 +46,24 @@ app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
+const mongoSanitize = require('express-mongo-sanitize');
+app.use(mongoSanitize({
+    replaceWith: '_',
+  }));
+
+const store = new MongoDBStore({
+    url: dbUrl,
+    secret,
+    touchAfter: 24 * 3600 
+});
+store.on("error",function(e){
+    console.log("Session store error",e)
+})
+
 const config = {
+    store,
     name: "Wanderer",
-    secret:"Our secret",
+    secret,
     resave:false ,
     saveUninitialized : true,
     cookie : {

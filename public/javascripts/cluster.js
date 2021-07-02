@@ -47,7 +47,7 @@ map.on('load', function () {
 		source: 'campgrounds',
 		filter: ['!', ['has', 'point_count']],
 		paint: {
-			'circle-color': '#03C03C',
+			'circle-color': '#51bbd6',
 			'circle-radius': 4,
 			'circle-stroke-width': 1,
 			'circle-stroke-color': '#fff'
