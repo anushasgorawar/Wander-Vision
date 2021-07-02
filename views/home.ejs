@@ -16,12 +16,12 @@
             <div>
                 <h3 class="float-md-left mb-0">Wander</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-right">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
                     <% if(!currentUser) { %>
                     <a class="nav-link" href="/login">Login</a>
                     <a class="nav-link" href="/register">Register</a>
                     <% } else { %>
+                    <a class="nav-link" href="/campgrounds/addnew">Add Campground</a>
                     <a class="nav-link" href="/logout">Logout</a>
                     <% } %>
                 </nav>
@@ -31,7 +31,7 @@
             <h1>Wander</h1>
             <p class="lead"> Welcome to Wander! <br> Jump right in and explore places around the world. <br>
                 Feel free to share some of your own and comment on others!</p>
-            <a href="/campgrounds" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">View Campgrounds</a>
+            <a href="/campgrounds" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">View All Locations</a>
         </main>
 
         <footer class="mt-auto text-white-50">

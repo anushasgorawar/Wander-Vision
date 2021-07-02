@@ -1,0 +1,9 @@
+.card{
+background-color: rgba(255,255,255,0.5)
+}
+.rowform{
+margin-top: 10vh;
+}
+.formshadow{
+ text-shadow: 2px 2px #686868
+}

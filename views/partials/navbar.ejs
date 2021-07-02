@@ -1,36 +1,17 @@
-<!-- <div class="cover-container d-flex w-100 h-10 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link" href="/campgrounds">Campgrounds</a>
-                    <a class="nav-link" href="/campgrounds/addnew">Add new Campground</a>
-                </div>
-                <div class="navbar-nav ms-auto pl-5">
-                    <% if(!currentUser) { %>
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/register">Register</a>
-                    <% } else { %>
-                    <a class="nav-link" href="/logout">Logout</a>
-                    <% } %>
-                </div>
-        </header>
-    </div>
- -->
-
-
-<nav class="navbar sticky-top navbar-expand-lg nav-masthead ">
+<!-- <nav class="navbar navbar-expand-lg nav-masthead ">
   <div class="container-fluid">
     <a class="navbar-brand nav-link" href="/">Wander</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/campgrounds">Campgrounds</a>
         <a class="nav-link" href="/campgrounds/addnew">Add Campground</a>
       </div>
       <div class="navbar-nav ms-auto pl-5">
+        <form method="GET" action="/campgrounds" class="addsearch"></form>
         <% if(!currentUser){ %> 
         <a class="nav-link" href="/login">Login</a>
         <a class="nav-link" href="/register">Register</a>
@@ -40,19 +21,82 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
 
-<!-- <header class="mb-auto">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav> -->
+        <!-- <header class=" d-flex text-center text-white ">
             <div>
-                <nav class="nav nav-masthead justify-content-center float-md-right">
-                <a class="nav-link float-md-left mb-0" href="/">Wander</a>
-
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
-                    <a class="nav-link" href="/campgrounds">Campgrounds</a>
-                    
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/register">Register</a>
-                    
+                <nav class="nav nav-masthead">
+<div class="d-flex flex-row">
+                    <a href="/" class="text-white nav-link"><h3 class="ml-0 float-md-left">Wander</h3></a>
+                    <a class="nav-link float-md-left" aria-current="page" href="/">Home</a>
+                    <a class="nav-link float-md-left" href="/campgrounds">Campgrounds</a>
+</div>
+<div class="d-flex flex-row-reverse"></div> 
+                   <% if(!currentUser) { %>
+                    <a class="nav-link float-md-right" href="/login">Login</a>
+                    <a class="nav-link float-md-right" href="/register">Register</a>
+                    <% } else { %>
+                    <a class="nav-link float-md-right" href="/logout">Logout</a>
+                    <% } %>
+</div>
                 </nav>
             </div>
-        </header> -->
+        </header>
+         -->
+
+<div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <a class="nav-link" aria-current="page" href="/" class="text-white"><h3 class="float-md-left mb-0 text-white">Wander</h3></a>
+                <nav class="nav nav-masthead justify-content-center float-md-right">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="/campgrounds">View All Locations</a>
+                    <% if(!currentUser) { %>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                    <% } else { %>
+                    <a class="nav-link" href="/campgrounds/addnew">Add a Location</a>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </nav>
+            </div>
+        </header>
+
+
+    </div>
