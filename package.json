@@ -1,11 +1,11 @@
 {
   "name": "wander",
   "version": "1.0.0",
-  "description": "",
+  "description": "A full-stack Application using HTML,CSS and Javascript using NodeJS as the framework. Uses Mongo as the database, Cloudinary to store images and mapbox for precise map location.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-  "start" : "node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -42,5 +42,6 @@
     "passport-local-mongoose": "^6.1.0",
     "path": "^0.12.7",
     "sanitize-html": "^2.4.0"
-  }
+  },
+  "devDependencies": {}
 }
